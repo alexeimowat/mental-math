@@ -1,6 +1,10 @@
-<script>
+<script setup>
 defineProps ({
-    addend: {
+    addend1: {
+        num: Number,
+        required: true
+    },
+    addend2: {
         num: Number,
         required: true
     }
@@ -9,6 +13,6 @@ defineProps ({
 
 <template>
     <div>
-        <h1>{{addend}} + {{addend}}</h1>
+        <h1>{{addend1}} + {{addend2}}</h1>
     </div>
 </template>
