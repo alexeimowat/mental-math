@@ -2,8 +2,8 @@
     <div>
         <form @submit.prevent="checkAnswer">
             <h1> {{num2}} + {{num1}}</h1>
-            <input v-model="userAnswer" name="userAnswer" type="number" required>
-            <button>Check</button>
+            <input v-model="userAnswer" name="userAnswer" :class="{ wrong : numTimesWrong > 0 }" type="number" required>
+            <button >Check</button>
         </form>
     </div>
     <div>
@@ -13,6 +13,7 @@
         
     </div>
     <p>Streak: {{userStreak}}</p>
+    <p>Best: {{allTimeBest}}</p>
 </template>
 
 <script>
@@ -33,14 +34,17 @@ export default {
         },
         {
             id: 'hard',
-            level: 150,
+            level: 200,
             enabled: false
         }
         ]);
         var currentLevel = 0;
         var userAnswer = ref('');
+        //var isCorrect = false;
         var isCorrect = false;
+        var numTimesWrong = ref(0);
         var userStreak = ref(0);
+        var allTimeBest = ref(0);
         var num1 = ref(Math.floor(Math.random() * difficultyLevel.value[currentLevel].level));
         var num2 = ref(Math.floor(Math.random() * difficultyLevel.value[currentLevel].level));
 
@@ -49,10 +53,13 @@ export default {
             if (num1.value + num2.value === userAnswer.value) {
                 isCorrect = true;
                 userStreak.value++;
+                if (userStreak.value > allTimeBest.value) {
+                    allTimeBest.value = userStreak.value;
+                }
                 newRandomNums();
             }
             else {
-                console.log("Wrong");
+                numTimesWrong.value++;
                 userStreak.value = 0;
             }
         }
@@ -61,24 +68,29 @@ export default {
             num1.value = Math.floor(Math.random() * difficultyLevel.value[currentLevel].level);
             num2.value = Math.floor(Math.random() * difficultyLevel.value[currentLevel].level);
             userAnswer.value = '';
+            isCorrect = false;
+            numTimesWrong.value = 0;
         }
 
         function difficulty(newLvl) {
             difficultyLevel.value[currentLevel].enabled = !difficultyLevel.value[currentLevel].enabled;
             difficultyLevel.value[newLvl].enabled = !difficultyLevel.value[newLvl].enabled;
             currentLevel = newLvl;
+            newRandomNums();
         }
 
         return {
             num1,
             num2,
             userStreak,
+            allTimeBest,
             isCorrect,
             checkAnswer,
             newRandomNums,
             difficultyLevel,
             difficulty,
             userAnswer,
+            numTimesWrong,
         };
     }
 }
@@ -87,6 +99,13 @@ export default {
 
 <style>
     .selected {
-        background-color: grey;
+        background-color: #79A2E0;
+        border: #79A2E0;
+        color: white;
+    }
+
+    .wrong {
+        /* background-color: red; */
+        border-color: red;
     }
 </style>
