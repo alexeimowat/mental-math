@@ -11,7 +11,7 @@ import Addition from './components/math/addition.vue'
 
     <div>
       <!-- <HelloWorld msg="You did it!" /> -->
-      <Addition addend1=4 addend2=5 />
+      <Addition />
     </div>
   </header>
 
