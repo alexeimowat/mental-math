@@ -1,4 +1,5 @@
-const {MongoClient} = require('mongodb');
+//const {MongoClient} = require('mongodb');
+import {MongoClient} from 'mongodb';
 
 async function main() {
     //mongodb+srv://ment4LAdm1N:<password>@cluster0.htbmj.mongodb.net/?retryWrites=true&w=majority
@@ -18,6 +19,10 @@ async function main() {
     } finally {
         await client.close();
     }
+}
+
+export function testMsg() {
+    return "can you see this?";
 }
 
 main().catch(console.error);

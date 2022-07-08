@@ -21,7 +21,6 @@ import { ref } from 'vue';
 
 export default {
     setup() {
-        //var difficultyLevel = 10;
         var difficultyLevel = ref([{
             id: 'easy',
             level: 10,
@@ -49,7 +48,6 @@ export default {
         var num2 = ref(Math.floor(Math.random() * difficultyLevel.value[currentLevel].level));
 
         function checkAnswer() {
-            console.log(userAnswer.value);
             if (num1.value + num2.value === userAnswer.value) {
                 isCorrect = true;
                 userStreak.value++;
