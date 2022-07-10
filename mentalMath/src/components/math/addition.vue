@@ -1,5 +1,4 @@
 <template>
-    <!-- <div> -->
         <form @submit.prevent="checkAnswer">
             <div id="theExpression">
                 <p class="expression">{{num1}} + {{num2}}</p>
@@ -14,28 +13,6 @@
                 </div>
             </div>
         </form>
-
-        <!-- <div class="btn-group btn-group-toggle row d-flex justify-content-center" data-toggle="buttons"> -->
-            <!-- <button @click="difficulty(0)" :class="{ selected : difficultyLevel[0].enabled }">Easy</button>
-            <button @click="difficulty(1)" :class="{ selected : difficultyLevel[1].enabled }">Medium</button>
-            <button @click="difficulty(2)" :class="{ selected : difficultyLevel[2].enabled }">Hard</button> -->
-            
-            <!-- <div class="col-md-3">
-                <label @click="difficulty(0)" class="btn">
-                <input type="radio" name="options" id="easy" autocomplete="off" checked> Easy
-            </label>
-            </div>
-            <div class="col-md-3">
-                <label @click="difficulty(1)" class="btn">
-                <input type="radio" name="options" id="medium" autocomplete="off"> Medium
-            </label>
-            </div>
-            <div class="col-md-3">
-                <label @click="difficulty(2)" class="btn">
-                <input type="radio" name="options" id="hard" autocomplete="off"> Hard
-            </label>
-            </div>
-        </div> -->
 
         <div class="container" style="max-width: 30%;">
             <div class="row">
@@ -57,11 +34,6 @@
             </div>
         </div>
 
-        <!-- <div class="row d-flex justify-content-center"> -->
-            <!-- <p class="streak">Streak: {{userStreak}}</p>
-            <p class="streak">Best: {{allTimeBest}}</p> -->
-        <!-- </div> -->
-
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -79,17 +51,20 @@ export default {
     setup() {
         var difficultyLevel = ref([{
             id: 'easy',
-            level: 10,
+            minLevel: 0,
+            maxLevel: 10,
             enabled: true
         },
         {
             id: 'medium',
-            level: 50,
+            minLevel: 15,
+            maxLevel: 50,
             enabled: false
         },
         {
             id: 'hard',
-            level: 200,
+            minLevel: 75,
+            maxLevel: 200,
             enabled: false
         }
         ]);
@@ -100,8 +75,11 @@ export default {
         var numTimesWrong = ref(0);
         var userStreak = ref(0);
         var allTimeBest = ref(0);
-        var num1 = ref(Math.floor(Math.random() * difficultyLevel.value[currentLevel].level));
-        var num2 = ref(Math.floor(Math.random() * difficultyLevel.value[currentLevel].level));
+        
+        var num1 = ref(Math.floor(Math.random() * (difficultyLevel.value[currentLevel].maxLevel - 
+            difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel);
+        var num2 = ref(Math.floor(Math.random() * (difficultyLevel.value[currentLevel].maxLevel - 
+            difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel);
 
         function checkAnswer() {
             if (num1.value + num2.value === userAnswer.value) {
@@ -119,8 +97,10 @@ export default {
         }
 
         function newRandomNums() {
-            num1.value = Math.floor(Math.random() * difficultyLevel.value[currentLevel].level);
-            num2.value = Math.floor(Math.random() * difficultyLevel.value[currentLevel].level);
+            num1.value = Math.floor(Math.random() * (difficultyLevel.value[currentLevel].maxLevel - 
+                difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel;
+            num2.value = Math.floor(Math.random() * (difficultyLevel.value[currentLevel].maxLevel - 
+                difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel;
             userAnswer.value = '';
             isCorrect = false;
             numTimesWrong.value = 0;
