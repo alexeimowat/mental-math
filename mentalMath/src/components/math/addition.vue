@@ -1,19 +1,75 @@
 <template>
-    <div>
+    <!-- <div> -->
         <form @submit.prevent="checkAnswer">
-            <h1> {{num2}} + {{num1}}</h1>
-            <input v-model="userAnswer" name="userAnswer" :class="{ wrong : numTimesWrong > 0 }" type="number" required>
-            <button >Check</button>
+            <div id="theExpression">
+                <p class="expression">{{num1}} + {{num2}}</p>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-3">
+                    <input v-model="userAnswer" name="userAnswer" class="form-control" type="number" required>
+
+                    <!-- <input v-model="userAnswer" name="userAnswer" class="form-control" style="text-align:center;font-size: xx-large;" type="number" required> -->
+                    <button class="btn btn-primary mt-3" style="display: block; width: 100%;">Check</button>
+
+                </div>
+            </div>
         </form>
-    </div>
-    <div>
-        <button @click="difficulty(0)" :class="{ selected : difficultyLevel[0].enabled }">Easy</button>
-        <button @click="difficulty(1)" :class="{ selected : difficultyLevel[1].enabled }">Medium</button>
-        <button @click="difficulty(2)" :class="{ selected : difficultyLevel[2].enabled }">Hard</button>
+
+        <!-- <div class="btn-group btn-group-toggle row d-flex justify-content-center" data-toggle="buttons"> -->
+            <!-- <button @click="difficulty(0)" :class="{ selected : difficultyLevel[0].enabled }">Easy</button>
+            <button @click="difficulty(1)" :class="{ selected : difficultyLevel[1].enabled }">Medium</button>
+            <button @click="difficulty(2)" :class="{ selected : difficultyLevel[2].enabled }">Hard</button> -->
+            
+            <!-- <div class="col-md-3">
+                <label @click="difficulty(0)" class="btn">
+                <input type="radio" name="options" id="easy" autocomplete="off" checked> Easy
+            </label>
+            </div>
+            <div class="col-md-3">
+                <label @click="difficulty(1)" class="btn">
+                <input type="radio" name="options" id="medium" autocomplete="off"> Medium
+            </label>
+            </div>
+            <div class="col-md-3">
+                <label @click="difficulty(2)" class="btn">
+                <input type="radio" name="options" id="hard" autocomplete="off"> Hard
+            </label>
+            </div>
+        </div> -->
+
+        <div class="container" style="max-width: 30%;">
+            <div class="row">
+                <div class="col-sm" style="text-align: center;">
+                    <label @click="difficulty(0)" class="btn">
+                        <input type="radio" name="options" id="easy" autocomplete="off" checked> Easy
+                    </label>
+                </div>
+                <div class="col-sm" style="text-align: center;">
+                    <label @click="difficulty(1)" class="btn">
+                        <input type="radio" name="options" id="medium" autocomplete="off"> Medium
+                    </label>
+                </div>
+                <div class="col-sm" style="text-align: center;">
+                    <label @click="difficulty(2)" class="btn">
+                        <input type="radio" name="options" id="hard" autocomplete="off"> Hard
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="row d-flex justify-content-center"> -->
+            <!-- <p class="streak">Streak: {{userStreak}}</p>
+            <p class="streak">Best: {{allTimeBest}}</p> -->
+        <!-- </div> -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p class="streak">Streak: {{userStreak}} &nbsp; Best: {{allTimeBest}}&nbsp;</p>
+                </div>
+            </div>
+        </div>
         
-    </div>
-    <p>Streak: {{userStreak}}</p>
-    <p>Best: {{allTimeBest}}</p>
 </template>
 
 <script>
@@ -96,6 +152,16 @@ export default {
 </script>
 
 <style>
+    .expression {
+        font-size: 75px;
+        font-weight: bolder;
+        text-align: center;
+    }
+
+    .streak {
+        text-align: right;
+    }
+
     .selected {
         background-color: #79A2E0;
         border: #79A2E0;

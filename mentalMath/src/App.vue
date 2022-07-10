@@ -6,14 +6,15 @@ import Addition from './components/math/addition.vue'
 </script>
 
 <template>
-  <header>
+  <!-- <header> -->
     <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
-
-    <div>
-      <!-- <HelloWorld msg="You did it!" /> -->
+  <div class="mainContent">
+    <Addition />
+  </div>
+    <!-- <div>
       <Addition />
-    </div>
-  </header>
+    </div> -->
+  <!-- </header> -->
 
   <!-- <main> -->
     <!-- <TheWelcome /> -->
@@ -21,6 +22,18 @@ import Addition from './components/math/addition.vue'
 </template>
 
 <style>
+  body {
+    background-color: #363636;
+  }
+
+  .mainContent {
+    margin: auto;
+    width: 90%;
+    background-color: aliceblue;
+  }
+
+</style>
+<!-- <style>
 /* @import './assets/base.css'; */
 
 body {
@@ -46,4 +59,4 @@ input, textarea, button, p, div, section, article, select {
 .done {
   text-decoration: line-through;
 }
-</style>
+</style> -->
