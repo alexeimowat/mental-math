@@ -1,58 +1,58 @@
 <template>
-        <p class="titleHeader">SUBTRACTION</p>
-        <form @submit.prevent="checkAnswer">
-            <div id="theExpression">
-                <p class="expression" style="margin-bottom 0">{{num1}} - {{num2}}</p>
-            </div>
-            <div v-if="numTimesWrong > 0" class="row wrong">
-                <p>Incorrect, try again</p>
-                <!-- <span style="text-align:center">Incorrect, try again</span> -->
-            </div>
-            <div v-else>
-                <p>&nbsp;</p>
-            </div>
-
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-3">
-                    <input v-model="userAnswer" name="userAnswer" class="form-control" type="number" style="text-align: center;" required>
-
-                    <!-- <input v-model="userAnswer" name="userAnswer" class="form-control" style="text-align:center;font-size: xx-large;" type="number" required> -->
-                    <button class="btn btn-primary mt-3" style="display: block; width: 100%;">Check</button>
-
-                </div>
-            </div>
-        </form>
-
-        <div class="container" style="max-width: 30%; margin-top: 20px;">
-            <div class="row">
-                <div class="col-sm" :class="{ 'selected': difficultyLevel.at(0).enabled, 'easyBtn': !difficultyLevel.at(0).enabled }" style="text-align: center" @click="difficulty(0)">
-                    <label class="btn" style="color:azure" id="0">
-                        <!-- <input type="radio" name="options" id="easy" autocomplete="off" checked>  -->
-                        Easy
-                    </label>
-                </div>
-                <div class="col-sm" :class="{ 'selected': difficultyLevel.at(1).enabled, 'easyBtn': !difficultyLevel.at(1).enabled }" style="text-align: center;" @click="difficulty(1)">
-                    <label class="btn" style="color:azure" id="1">
-                        <!-- <input type="radio" name="options" id="medium" autocomplete="off">  -->
-                        Medium
-                    </label>
-                </div>
-                <div class="col-sm" :class="{ 'selected': difficultyLevel.at(2).enabled, 'easyBtn': !difficultyLevel.at(2).enabled }" style="text-align: center;" @click="difficulty(2)">
-                    <label class="btn" style="color:azure" id="2">
-                        <!-- <input type="radio" name="options" id="hard" autocomplete="off">  -->
-                        Hard
-                    </label>
-                </div>
-            </div>
+    <p class="titleHeaderSub">SUBTRACTION</p>
+    <form @submit.prevent="checkAnswer">
+        <div id="theExpression">
+            <p class="expressionSub" style="margin-bottom 0">{{num1}} - {{num2}}</p>
+        </div>
+        <div v-if="numTimesWrong > 0" class="row wrongSub">
+            <p>Incorrect, try again</p>
+            <!-- <span style="text-align:center">Incorrect, try again</span> -->
+        </div>
+        <div v-else>
+            <p>&nbsp;</p>
         </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <p class="streak">Streak: {{userStreak}} &nbsp; Best: {{allTimeBest}}&nbsp;</p>
-                </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-3">
+                <input v-model="userAnswer" name="userAnswer" class="form-control" type="number" style="text-align: center;" required>
+
+                <!-- <input v-model="userAnswer" name="userAnswer" class="form-control" style="text-align:center;font-size: xx-large;" type="number" required> -->
+                <button class="btn btn-primary mt-3" style="display: block; width: 100%;">Check</button>
+
             </div>
         </div>
+    </form>
+
+    <div class="container" style="max-width: 30%; margin-top: 20px;">
+        <div class="row">
+            <div class="col-sm" :class="{ 'selectedSub': difficultyLevel.at(0).enabled, 'subBtn': !difficultyLevel.at(0).enabled }" style="text-align: center" @click="difficulty(0)">
+                <label class="btn" style="color:azure" id="0">
+                    <!-- <input type="radio" name="options" id="easy" autocomplete="off" checked>  -->
+                    Easy
+                </label>
+            </div>
+            <div class="col-sm" :class="{ 'selectedSub': difficultyLevel.at(1).enabled, 'subBtn': !difficultyLevel.at(1).enabled }" style="text-align: center;" @click="difficulty(1)">
+                <label class="btn" style="color:azure" id="1">
+                    <!-- <input type="radio" name="options" id="medium" autocomplete="off">  -->
+                    Medium
+                </label>
+            </div>
+            <div class="col-sm" :class="{ 'selectedSub': difficultyLevel.at(2).enabled, 'subBtn': !difficultyLevel.at(2).enabled }" style="text-align: center;" @click="difficulty(2)">
+                <label class="btn" style="color:azure" id="2">
+                    <!-- <input type="radio" name="options" id="hard" autocomplete="off">  -->
+                    Hard
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="streakSub">Streak: {{userStreak}} &nbsp; Best: {{allTimeBest}}&nbsp;</p>
+            </div>
+        </div>
+    </div>
         
 </template>
 
@@ -152,7 +152,7 @@ export default {
 </script>
 
 <style>
-    .titleHeader {
+    .titleHeaderSub {
         color: #3F94E8;
         font-weight: bolder;
         font-style: italic;
@@ -160,7 +160,7 @@ export default {
         margin: 0;
     }
 
-    .expression {
+    .expressionSub {
         font-size: 75px;
         font-weight: bolder;
         text-align: center;
@@ -168,30 +168,30 @@ export default {
         margin-bottom: -20px;
     }
 
-    .streak {
+    .streakSub {
         text-align: right;
         color: azure;
         margin-bottom: 20px;
     }
 
-    .selected {
+    .selectedSub {
         background-color: #3F94E8;
         border: #3F94E8 solid 0.01em;
         color: black;
     }
 
-    .wrong {
+    .wrongSub {
         /* background-color: red; */
         color:red;
         font-weight: bold;
         font-size: medium;
     }
 
-    .difficultyBtn {
+    .difficultySubBtn {
         border: 0.01em solid azure;
     }
 
-    .easyBtn {
+    .subBtn {
         background-color: #4E4E4E;
         border: 0.01em solid azure;
         cursor: pointer;

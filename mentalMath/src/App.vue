@@ -71,13 +71,9 @@ export default {
         </div>
   </div>
 
-  <div v-if="addSelected" class="mainContent" >
-    <!-- <Addition /> -->
-    A
-  </div>
-  <div v-else class="mainContent">
-    B
-    <!-- <Subtraction /> -->
+  <div class="mainContent">
+    <Addition />
+    <Subtraction />
   </div>
 
   <!-- <p style="color:white">{{MathModes.call(getSubStatus)}}</p> -->
