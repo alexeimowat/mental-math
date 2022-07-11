@@ -13,24 +13,27 @@
 
                 </div>
             </div>
+            <div class="row">
+                <p>Incorrect</p>
+            </div>
         </form>
 
         <div class="container" style="max-width: 30%; margin-top: 20px;">
             <div class="row">
-                <div class="col-sm easyBtn" style="text-align: center;">
-                    <label @click="difficulty(0)" class="btn" style="color:azure" id="0">
+                <div class="col-sm" :class="{ 'selected': difficultyLevel.at(0).enabled, 'easyBtn': !difficultyLevel.at(0).enabled }" style="text-align: center" @click="difficulty(0)">
+                    <label class="btn" style="color:azure" id="0">
                         <!-- <input type="radio" name="options" id="easy" autocomplete="off" checked>  -->
                         Easy
                     </label>
                 </div>
-                <div class="col-sm easyBtn" style="text-align: center;">
-                    <label @click="difficulty(1)" class="btn" style="color:azure" id="1">
+                <div class="col-sm" :class="{ 'selected': difficultyLevel.at(1).enabled, 'easyBtn': !difficultyLevel.at(1).enabled }" style="text-align: center;" @click="difficulty(1)">
+                    <label class="btn" style="color:azure" id="1">
                         <!-- <input type="radio" name="options" id="medium" autocomplete="off">  -->
                         Medium
                     </label>
                 </div>
-                <div class="col-sm easyBtn" style="text-align: center;">
-                    <label @click="difficulty(2)" class="btn" style="color:azure" id="2">
+                <div class="col-sm" :class="{ 'selected': difficultyLevel.at(2).enabled, 'easyBtn': !difficultyLevel.at(2).enabled }" style="text-align: center;" @click="difficulty(2)">
+                    <label class="btn" style="color:azure" id="2">
                         <!-- <input type="radio" name="options" id="hard" autocomplete="off">  -->
                         Hard
                     </label>
@@ -166,9 +169,9 @@ export default {
     }
 
     .selected {
-        background-color: #79A2E0;
-        border: #79A2E0;
-        color: white;
+        background-color: #E83F95;
+        border: azure;
+        color: black;
     }
 
     .wrong {
