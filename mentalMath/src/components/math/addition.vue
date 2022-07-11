@@ -2,8 +2,16 @@
         <p class="titleHeader">ADDITION</p>
         <form @submit.prevent="checkAnswer">
             <div id="theExpression">
-                <p class="expression">{{num1}} + {{num2}}</p>
+                <p class="expression" style="margin-bottom 0">{{num1}} + {{num2}}</p>
             </div>
+            <div v-if="numTimesWrong > 0" class="row wrong">
+                <p>Incorrect, try again</p>
+                <!-- <span style="text-align:center">Incorrect, try again</span> -->
+            </div>
+            <div v-else>
+                <p>&nbsp;</p>
+            </div>
+
             <div class="row d-flex justify-content-center">
                 <div class="col-md-3">
                     <input v-model="userAnswer" name="userAnswer" class="form-control" type="number" style="text-align: center;" required>
@@ -12,9 +20,6 @@
                     <button class="btn btn-primary mt-3" style="display: block; width: 100%;">Check</button>
 
                 </div>
-            </div>
-            <div class="row">
-                <p>Incorrect</p>
             </div>
         </form>
 
@@ -160,6 +165,7 @@ export default {
         font-weight: bolder;
         text-align: center;
         color: azure;
+        margin-bottom: -20px;
     }
 
     .streak {
@@ -176,7 +182,9 @@ export default {
 
     .wrong {
         /* background-color: red; */
-        border-color: red;
+        color:red;
+        font-weight: bold;
+        font-size: medium;
     }
 
     .difficultyBtn {
