@@ -7,6 +7,7 @@ import MathModes from './components/mathModes.vue';
 import Subtraction from './components/math/subtraction.vue';
 import { ref } from 'vue';
 import Division from './components/math/division.vue';
+import Multiplication from './components/math/multiplication.vue';
 
 export default {
   components: {
@@ -14,7 +15,8 @@ export default {
     // MathModes,
     Subtraction,
     Addition,
-    Division
+    Division,
+    Multiplication
 },
   data() {
 
@@ -54,6 +56,9 @@ export default {
   </div>
   <div v-else-if="showDiv" class="mainContent">
     <Division />
+  </div>
+  <div v-else-if="showMult" class="mainContent">
+    <Multiplication />
   </div>
   <div v-else class="mainContent">
     <Subtraction />
