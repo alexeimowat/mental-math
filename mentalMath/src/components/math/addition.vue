@@ -49,16 +49,22 @@ import { ref } from 'vue';
 
 export default {
     setup() {
+        // var anExpression = ref([{
+        //     id: 'add',
+        //     toStr: num1 + " + " + num2,
+
+        // }]);
+
         var difficultyLevel = ref([{
             id: 'easy',
             minLevel: 0,
-            maxLevel: 10,
+            maxLevel: 20,
             enabled: true
         },
         {
             id: 'medium',
-            minLevel: 15,
-            maxLevel: 50,
+            minLevel: 21,
+            maxLevel: 74,
             enabled: false
         },
         {
@@ -70,7 +76,7 @@ export default {
         ]);
         var currentLevel = 0;
         var userAnswer = ref('');
-        //var isCorrect = false;
+        
         var isCorrect = false;
         var numTimesWrong = ref(0);
         var userStreak = ref(0);
