@@ -6,6 +6,7 @@ import Header from './components/header.vue'
 import MathModes from './components/mathModes.vue';
 import Subtraction from './components/math/subtraction.vue';
 import { ref } from 'vue';
+import Division from './components/math/division.vue';
 
 export default {
   components: {
@@ -13,12 +14,15 @@ export default {
     // MathModes,
     Subtraction,
     Addition,
-  },
+    Division
+},
   data() {
 
     return {
       showAdd: true,
       showSub: false,
+      showDiv: false,
+      showMult: false
     };
   }
 }
@@ -30,23 +34,26 @@ export default {
   <div class="container" style="width:100%">
         <div class="row" style="text-align:center; margin-bottom: 10px; margin-top: 0;">
             <div class="col">
-                <label @click="showAdd = true, showSub = false" class="addLabel">ADDITION</label>
+                <label @click="showAdd = true, showSub = false, showDiv = false, showMult = false" class="addLabel">ADDITION</label>
             </div>
             <div class="col">
-                <label class="multLabel">MULTIPLICATION</label>
+                <label @click="showAdd = false, showSub = false, showDiv = false, showMult = true" class="multLabel">MULTIPLICATION</label>
             </div>
             <div class="col">
-                <label @click="showAdd = false, showSub = true" class="subLabel">SUBTRACTION</label>
+                <label @click="showAdd = false, showSub = true, showDiv = false, showMult = false" class="subLabel">SUBTRACTION</label>
                 <!-- <button @click="displaySub()">Sub</button> -->
             </div>
             <div class="col">
-                <label class="divLabel">DIVISION</label>
+                <label @click="showDiv = true, showAdd = false, showSub = false, showMult = false" class="divLabel">DIVISION</label>
             </div>
         </div>
   </div>
 
   <div v-if="showAdd" class="mainContent">
     <Addition />
+  </div>
+  <div v-else-if="showDiv" class="mainContent">
+    <Division />
   </div>
   <div v-else class="mainContent">
     <Subtraction />
