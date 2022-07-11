@@ -5,11 +5,12 @@ import Addition from './components/math/addition.vue'
 import Header from './components/header.vue'
 import MathModes from './components/mathModes.vue';
 import Subtraction from './components/math/subtraction.vue';
+import { ref } from 'vue';
 
 export default {
   components: {
     Header,
-    MathModes,
+    // MathModes,
     Subtraction,
     Addition,
   },
@@ -17,9 +18,32 @@ export default {
     var sub = false;
     var add = true;
 
+    // var addSelected = true;
+    // var subSelected = false;
+    var subSelected = ref(false);
+    var addSelected = ref(true);
+
+    function addMain() {
+      // console.log("Click addMain");
+      addSelected = true;
+      subSelected = false;
+      console.log("Add is " + addSelected + " and Sub is " + subSelected);
+    }
+
+    function subMain() {
+      // console.log("Click subMain");
+      addSelected = false;
+      subSelected = true;
+      console.log("Add is " + addSelected + " and Sub is " + subSelected);
+
+    }
+
     return {
-      add,
-      sub
+      addSelected,
+      subSelected,
+      addMain,
+      subMain,
+      test: true
     };
   }
 }
@@ -28,12 +52,34 @@ export default {
 
 <template>
   <Header />
-  <MathModes />
+  <!-- <MathModes /> -->
     <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
-  <div class="mainContent">
-    <Addition />
-    <!-- <Subtraction v-else/> -->
+  <div class="container" style="width:100%">
+        <div class="row" style="text-align:center; margin-bottom: 10px; margin-top: 0;">
+            <div class="col">
+                <label @click="test = !test" class="addLabel">ADDITION</label>
+            </div>
+            <div class="col">
+                <label class="multLabel">MULTIPLICATION</label>
+            </div>
+            <div class="col">
+                <label @click="subMain()" class="subLabel">SUBTRACTION</label>
+            </div>
+            <div class="col">
+                <label class="divLabel">DIVISION</label>
+            </div>
+        </div>
   </div>
+
+  <div v-if="addSelected" class="mainContent" >
+    <!-- <Addition /> -->
+    A
+  </div>
+  <div v-else class="mainContent">
+    B
+    <!-- <Subtraction /> -->
+  </div>
+
   <!-- <p style="color:white">{{MathModes.call(getSubStatus)}}</p> -->
   <!-- <main> -->
     <!-- <TheWelcome /> -->
@@ -50,31 +96,47 @@ export default {
     border-radius: 10px;
   }
 
+  .addLabel {
+        color: azure;
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    .multLabel {
+        color: azure;
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    .subLabel {
+        color: azure;
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    .divLabel {
+        color: azure;
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    .addLabel:hover {
+        color: #E83F95;
+        cursor: pointer;
+    }
+
+    .multLabel:hover {
+        color: #3F40E8;
+        cursor: pointer;
+    }
+
+    .subLabel:hover {
+        color: #3F94E8;
+        cursor: pointer;
+    }
+
+    .divLabel:hover {
+        color: #38D583;
+        cursor: pointer;
+    }
 </style>
-<!-- <style>
-/* @import './assets/base.css'; */
-
-body {
-  font-family: sans-serif;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  font-size: 2em;
-  width: 80%;
-  margin: 0 auto;
-}
-input, textarea, button, p, div, section, article, select {
-  display: 'block';
-  width: 100%;
-  font-family: sans-serif;
-  font-size: 1em;
-  margin: 0.5em;
-}
-
-.todo {
-  cursor: pointer;
-}
-
-.done {
-  text-decoration: line-through;
-}
-</style> -->
