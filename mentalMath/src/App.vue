@@ -14,36 +14,11 @@ export default {
     Subtraction,
     Addition,
   },
-  setup() {
-    var sub = false;
-    var add = true;
-
-    // var addSelected = true;
-    // var subSelected = false;
-    var subSelected = ref(false);
-    var addSelected = ref(true);
-
-    function addMain() {
-      // console.log("Click addMain");
-      addSelected = true;
-      subSelected = false;
-      console.log("Add is " + addSelected + " and Sub is " + subSelected);
-    }
-
-    function subMain() {
-      // console.log("Click subMain");
-      addSelected = false;
-      subSelected = true;
-      console.log("Add is " + addSelected + " and Sub is " + subSelected);
-
-    }
+  data() {
 
     return {
-      addSelected,
-      subSelected,
-      addMain,
-      subMain,
-      test: true
+      showAdd: true,
+      showSub: false,
     };
   }
 }
@@ -52,18 +27,17 @@ export default {
 
 <template>
   <Header />
-  <!-- <MathModes /> -->
-    <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
   <div class="container" style="width:100%">
         <div class="row" style="text-align:center; margin-bottom: 10px; margin-top: 0;">
             <div class="col">
-                <label @click="test = !test" class="addLabel">ADDITION</label>
+                <label @click="showAdd = true, showSub = false" class="addLabel">ADDITION</label>
             </div>
             <div class="col">
                 <label class="multLabel">MULTIPLICATION</label>
             </div>
             <div class="col">
-                <label @click="subMain()" class="subLabel">SUBTRACTION</label>
+                <label @click="showAdd = false, showSub = true" class="subLabel">SUBTRACTION</label>
+                <!-- <button @click="displaySub()">Sub</button> -->
             </div>
             <div class="col">
                 <label class="divLabel">DIVISION</label>
@@ -71,8 +45,10 @@ export default {
         </div>
   </div>
 
-  <div class="mainContent">
+  <div v-if="showAdd" class="mainContent">
     <Addition />
+  </div>
+  <div v-else class="mainContent">
     <Subtraction />
   </div>
 
