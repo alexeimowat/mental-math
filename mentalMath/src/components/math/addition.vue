@@ -1,4 +1,5 @@
 <template>
+        <p class="titleHeader">ADDITION</p>
         <form @submit.prevent="checkAnswer">
             <div id="theExpression">
                 <p class="expression">{{num1}} + {{num2}}</p>
@@ -143,6 +144,14 @@ export default {
 </script>
 
 <style>
+    .titleHeader {
+        color: #E83F95;
+        font-weight: bolder;
+        font-style: italic;
+        font-size: x-large;
+        margin: 0;
+    }
+
     .expression {
         font-size: 75px;
         font-weight: bolder;

@@ -11,7 +11,7 @@
 <style>
     .theHeader {
     margin: 0;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     width: 100%;
     padding: 10px;
     /* background-color: #272829; */
