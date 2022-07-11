@@ -14,21 +14,24 @@
             </div>
         </form>
 
-        <div class="container" style="max-width: 30%;">
+        <div class="container" style="max-width: 30%; margin-top: 20px;">
             <div class="row">
-                <div class="col-sm" style="text-align: center;">
-                    <label @click="difficulty(0)" class="btn" style="color:azure">
-                        <input type="radio" name="options" id="easy" autocomplete="off" checked> Easy
+                <div class="col-sm easyBtn" style="text-align: center;">
+                    <label @click="difficulty(0)" class="btn" style="color:azure" id="0">
+                        <!-- <input type="radio" name="options" id="easy" autocomplete="off" checked>  -->
+                        Easy
                     </label>
                 </div>
-                <div class="col-sm" style="text-align: center;">
-                    <label @click="difficulty(1)" class="btn" style="color:azure">
-                        <input type="radio" name="options" id="medium" autocomplete="off"> Medium
+                <div class="col-sm easyBtn" style="text-align: center;">
+                    <label @click="difficulty(1)" class="btn" style="color:azure" id="1">
+                        <!-- <input type="radio" name="options" id="medium" autocomplete="off">  -->
+                        Medium
                     </label>
                 </div>
-                <div class="col-sm" style="text-align: center;">
-                    <label @click="difficulty(2)" class="btn" style="color:azure">
-                        <input type="radio" name="options" id="hard" autocomplete="off"> Hard
+                <div class="col-sm easyBtn" style="text-align: center;">
+                    <label @click="difficulty(2)" class="btn" style="color:azure" id="2">
+                        <!-- <input type="radio" name="options" id="hard" autocomplete="off">  -->
+                        Hard
                     </label>
                 </div>
             </div>
@@ -113,6 +116,8 @@ export default {
         }
 
         function difficulty(newLvl) {
+            // document.getElementById(currentLevel).setAttribute("class", )
+            
             difficultyLevel.value[currentLevel].enabled = !difficultyLevel.value[currentLevel].enabled;
             difficultyLevel.value[newLvl].enabled = !difficultyLevel.value[newLvl].enabled;
             currentLevel = newLvl;
@@ -161,4 +166,15 @@ export default {
         /* background-color: red; */
         border-color: red;
     }
+
+    .difficultyBtn {
+        border: 0.01em solid azure;
+    }
+
+    .easyBtn {
+        background-color: #4E4E4E;
+        border: 0.01em solid azure;
+        cursor: pointer;
+    }
+
 </style>
