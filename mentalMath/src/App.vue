@@ -2,34 +2,29 @@
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import Addition from './components/math/addition.vue'
+import Header from './components/header.vue'
+//import Header from './components/header.vue';
 // import Addition from './components/math/addition.vue'
 </script>
 
 <template>
-  <!-- <header> -->
+  <Header />
     <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
   <div class="mainContent">
     <Addition />
   </div>
-    <!-- <div>
-      <Addition />
-    </div> -->
-  <!-- </header> -->
-
   <!-- <main> -->
     <!-- <TheWelcome /> -->
   <!-- </main> -->
+
 </template>
 
 <style>
-  body {
-    background-color: #363636;
-  }
-
   .mainContent {
     margin: auto;
     width: 90%;
-    background-color: aliceblue;
+    background-color: #43454A;
+    border-radius: 10px;
   }
 
 </style>

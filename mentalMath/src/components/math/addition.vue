@@ -5,7 +5,7 @@
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-md-3">
-                    <input v-model="userAnswer" name="userAnswer" class="form-control" type="number" required>
+                    <input v-model="userAnswer" name="userAnswer" class="form-control" type="number" style="text-align: center;" required>
 
                     <!-- <input v-model="userAnswer" name="userAnswer" class="form-control" style="text-align:center;font-size: xx-large;" type="number" required> -->
                     <button class="btn btn-primary mt-3" style="display: block; width: 100%;">Check</button>
@@ -17,17 +17,17 @@
         <div class="container" style="max-width: 30%;">
             <div class="row">
                 <div class="col-sm" style="text-align: center;">
-                    <label @click="difficulty(0)" class="btn">
+                    <label @click="difficulty(0)" class="btn" style="color:azure">
                         <input type="radio" name="options" id="easy" autocomplete="off" checked> Easy
                     </label>
                 </div>
                 <div class="col-sm" style="text-align: center;">
-                    <label @click="difficulty(1)" class="btn">
+                    <label @click="difficulty(1)" class="btn" style="color:azure">
                         <input type="radio" name="options" id="medium" autocomplete="off"> Medium
                     </label>
                 </div>
                 <div class="col-sm" style="text-align: center;">
-                    <label @click="difficulty(2)" class="btn">
+                    <label @click="difficulty(2)" class="btn" style="color:azure">
                         <input type="radio" name="options" id="hard" autocomplete="off"> Hard
                     </label>
                 </div>
@@ -142,10 +142,13 @@ export default {
         font-size: 75px;
         font-weight: bolder;
         text-align: center;
+        color: azure;
     }
 
     .streak {
         text-align: right;
+        color: azure;
+        margin-bottom: 20px;
     }
 
     .selected {
