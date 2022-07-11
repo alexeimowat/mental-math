@@ -1,9 +1,28 @@
-<script setup>
+<script>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import Addition from './components/math/addition.vue'
 import Header from './components/header.vue'
 import MathModes from './components/mathModes.vue';
+import Subtraction from './components/math/subtraction.vue';
+
+export default {
+  components: {
+    Header,
+    MathModes,
+    Subtraction,
+    Addition,
+  },
+  setup() {
+    var sub = false;
+    var add = true;
+
+    return {
+      add,
+      sub
+    };
+  }
+}
 
 </script>
 
@@ -13,7 +32,9 @@ import MathModes from './components/mathModes.vue';
     <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
   <div class="mainContent">
     <Addition />
+    <!-- <Subtraction v-else/> -->
   </div>
+  <!-- <p style="color:white">{{MathModes.call(getSubStatus)}}</p> -->
   <!-- <main> -->
     <!-- <TheWelcome /> -->
   <!-- </main> -->

@@ -1,8 +1,8 @@
 <template>
-        <p class="titleHeader">ADDITION</p>
+        <p class="titleHeader">SUBTRACTION</p>
         <form @submit.prevent="checkAnswer">
             <div id="theExpression">
-                <p class="expression" style="margin-bottom 0">{{num1}} + {{num2}}</p>
+                <p class="expression" style="margin-bottom 0">{{num1}} - {{num2}}</p>
             </div>
             <div v-if="numTimesWrong > 0" class="row wrong">
                 <p>Incorrect, try again</p>
@@ -100,7 +100,7 @@ export default {
             difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel);
 
         function checkAnswer() {
-            if (num1.value + num2.value === userAnswer.value) {
+            if (num1.value - num2.value === userAnswer.value) {
                 isCorrect = true;
                 userStreak.value++;
                 if (userStreak.value > allTimeBest.value) {
@@ -153,7 +153,7 @@ export default {
 
 <style>
     .titleHeader {
-        color: #E83F95;
+        color: #3F94E8;
         font-weight: bolder;
         font-style: italic;
         font-size: x-large;
@@ -175,8 +175,8 @@ export default {
     }
 
     .selected {
-        background-color: #E83F95;
-        border: #E83F95 solid 0.01em;
+        background-color: #3F94E8;
+        border: #3F94E8 solid 0.01em;
         color: black;
     }
 

@@ -8,7 +8,7 @@
                 <label class="multLabel">MULTIPLICATION</label>
             </div>
             <div class="col">
-                <label class="subLabel">SUBTRACTION</label>
+                <label @click="subClick" class="subLabel">SUBTRACTION</label>
             </div>
             <div class="col">
                 <label class="divLabel">DIVISION</label>
@@ -16,6 +16,30 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    setup() {
+        var sub = "sub has been clicked!";
+        var subBool = false;
+
+        function subClick() {
+            subBool = !subBool;
+            console.log(subBool);
+        }
+
+        function getSubStatus() {
+            return subBool;
+        }
+
+        return {
+            sub,
+            subClick,
+            subBool,
+        };
+    }
+}
+</script>
 
 <style>
     .addLabel {
