@@ -1,8 +1,11 @@
 <template>
     <p class="titleHeaderMult">MULTIPLICATION</p>
     <form @submit.prevent="checkAnswer">
-        <div id="theExpressionMult">
+        <div id="theExpressionMult" v-if="!difficultyLevel.at(3).enabled">
             <p class="expressionMult" style="margin-bottom 0">{{num1}} x {{num2}}</p>
+        </div>
+        <div id="theExpressionMult" v-else>
+            <p class="expressionMult" style="margin-bottom 0">What is {{percents.at(percentsIndex)}}% of {{num2}}</p>
         </div>
         <div v-if="numTimesWrong > 0" class="row wrongSub">
             <p>Incorrect, try again</p>
@@ -43,6 +46,11 @@
                     Hard
                 </label>
             </div>
+            <div class="col-sm" :class="{ 'selectedMult': difficultyLevel.at(3).enabled, 'multBtn': !difficultyLevel.at(3).enabled }" style="text-align: center;" @click="difficulty(3)">
+                <label class="btn" style="color:azure" id="3">
+                    Percents
+                </label>
+            </div>
         </div>
     </div>
 
@@ -67,6 +75,9 @@ export default {
 
         // }]);
 
+        var percents = [5, 10, 15, 18, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100];
+        var percentsIndex = Math.floor(Math.random() * (percents.length) - 1);
+
         var difficultyLevel = ref([{
             id: 'easy',
             minLevel: 0,
@@ -84,6 +95,12 @@ export default {
             minLevel: 75,
             maxLevel: 200,
             enabled: false
+        },
+        {
+            id: 'percent',
+            minLevel: 10,
+            maxLevel: 100,
+            enabled: false
         }
         ]);
         var currentLevel = 0;
@@ -100,7 +117,8 @@ export default {
             difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel);
 
         function checkAnswer() {
-            if (num1.value * num2.value === userAnswer.value) {
+            if (!difficultyLevel.value[3].enabled) {
+                if (num1.value * num2.value === userAnswer.value) {
                 isCorrect = true;
                 userStreak.value++;
                 if (userStreak.value > allTimeBest.value) {
@@ -111,6 +129,25 @@ export default {
             else {
                 numTimesWrong.value++;
                 userStreak.value = 0;
+            }
+            }
+            else {
+                let percentVal = percents.at(percentsIndex) / 100;
+                if (percentVal * num2.value === userAnswer.value) {
+                    
+                    isCorrect = true;
+                    userStreak.value++;
+                    if (userStreak.value > allTimeBest.value) {
+                        allTimeBest.value = userStreak.value;
+                    }
+                    newRandomNums();
+                }
+                else {
+                    numTimesWrong.value++;
+                    userStreak.value = 0;
+                    console.log("Actual: " + percentVal * num2.value);
+                    console.log("User: " + userAnswer.value);
+                }
             }
         }
 
@@ -126,7 +163,6 @@ export default {
 
         function difficulty(newLvl) {
             // document.getElementById(currentLevel).setAttribute("class", )
-            
             difficultyLevel.value[currentLevel].enabled = !difficultyLevel.value[currentLevel].enabled;
             difficultyLevel.value[newLvl].enabled = !difficultyLevel.value[newLvl].enabled;
             currentLevel = newLvl;
@@ -145,6 +181,8 @@ export default {
             difficulty,
             userAnswer,
             numTimesWrong,
+            percents,
+            percentsIndex
         };
     }
 }

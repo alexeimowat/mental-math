@@ -14,7 +14,7 @@
 
         <div class="row d-flex justify-content-center">
             <div class="col-md-3">
-                <input v-model="userAnswer" name="userAnswer" class="form-control" style="text-align: center;" required>
+                <input v-model="userAnswer" name="userAnswer" class="form-control" style="text-align: center;" pattern="^\d*(\.\d{1,2})?$" required>
 
                 <!-- <input v-model="userAnswer" name="userAnswer" class="form-control" style="text-align:center;font-size: xx-large;" type="number" required> -->
                 <button class="btn btn-primary mt-3" style="display: block; width: 100%;">Check</button>
@@ -102,6 +102,7 @@ export default {
         function checkAnswer() {
             console.log(num1.value / num2.value);
             if (num1.value / num2.value === userAnswer.value) {
+            // if ((num1.value / num2.value) {
                 isCorrect = true;
                 userStreak.value++;
                 if (userStreak.value > allTimeBest.value) {
