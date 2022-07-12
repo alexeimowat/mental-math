@@ -70,7 +70,7 @@ export default {
         var difficultyLevel = ref([{
             id: 'easy',
             minLevel: 0,
-            maxLevel: 20,
+            maxLevel: 10,
             enabled: true
         },
         {
