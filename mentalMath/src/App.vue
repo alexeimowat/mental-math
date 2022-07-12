@@ -45,18 +45,18 @@ export default {
                 <label @click="showAdd = false, showSub = true, showDiv = false, showMult = false" class="subLabel">SUBTRACTION</label>
                 <!-- <button @click="displaySub()">Sub</button> -->
             </div>
-            <div class="col">
+            <!-- <div class="col">
                 <label @click="showDiv = true, showAdd = false, showSub = false, showMult = false" class="divLabel">DIVISION</label>
-            </div>
+            </div> -->
         </div>
   </div>
 
   <div v-if="showAdd" class="mainContent">
     <Addition />
   </div>
-  <div v-else-if="showDiv" class="mainContent">
+  <!-- <div v-else-if="showDiv" class="mainContent">
     <Division />
-  </div>
+  </div> -->
   <div v-else-if="showMult" class="mainContent">
     <Multiplication />
   </div>
