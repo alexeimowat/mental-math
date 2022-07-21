@@ -6,7 +6,6 @@
             </div>
             <div v-if="numTimesWrong > 0" class="row wrong">
                 <p>Incorrect, try again</p>
-                <!-- <span style="text-align:center">Incorrect, try again</span> -->
             </div>
             <div v-else>
                 <p>&nbsp;</p>
@@ -14,13 +13,23 @@
 
             <div class="row d-flex justify-content-center">
                 <div class="col-sm-auto">
-                    <input v-model="userAnswer" name="userAnswer" class="form-control" type="number" style="text-align: center; width: 80%; margin: auto" required>
-
-                    <!-- <input v-model="userAnswer" name="userAnswer" class="form-control" style="text-align:center;font-size: xx-large;" type="number" required> -->
-                    <button class="btn btn-primary mt-3" style="display: block; width: 80%; margin: auto;">Check</button>
-
+                    <input v-model="userAnswer" name="userAnswer" class="form-control" type="number" style="text-align: center; width: 60%; margin: auto" required>
+                    <button class="btn btn-primary mt-3" style="display: block; width: 60%; margin: auto;">Check</button>
                 </div>
+                <!-- <div class="col-sm-auto">
+                    <button>Skip</button>
+                </div> -->
+                
+                
             </div>
+            <!-- <div class="row d-flex justify-content-center">
+                <div class="col-sm-2">
+                    <button class="btn btn-primary mt-3" style="display: block; float: right; width: 40%; margin: auto;">Check</button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-secondary mt-3" style="width: 40%; margin: auto">Skip</button>
+                </div>
+            </div> -->
         </form>
 
         <div class="container" style="max-width: 30%; margin-top: 20px;">
@@ -86,6 +95,7 @@ export default {
             enabled: false
         }
         ]);
+
         var currentLevel = 0;
         var userAnswer = ref('');
         
@@ -94,11 +104,16 @@ export default {
         var userStreak = ref(0);
         var allTimeBest = ref(0);
         
+        // Random number generator for expressions
         var num1 = ref(Math.floor(Math.random() * (difficultyLevel.value[currentLevel].maxLevel - 
             difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel);
         var num2 = ref(Math.floor(Math.random() * (difficultyLevel.value[currentLevel].maxLevel - 
             difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel);
 
+        /* Function takes the user input and compares it to what the actual result should be
+        If the answer is correct, the user streak is increased and new numbers are generated.
+        If wrong, user must continue to answer the same question until getting a correct answer
+        */
         function checkAnswer() {
             if (num1.value + num2.value === userAnswer.value) {
                 isCorrect = true;
