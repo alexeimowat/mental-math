@@ -42,7 +42,7 @@
     }
 
     .T {
-        color:#3F94E8;
+        color: #32CAFF;
         font-style: italic;
         font-weight: bolder;
     }

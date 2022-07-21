@@ -217,6 +217,13 @@ export default {
         background-color: #3F40E8;
         border: #3F40E8 solid 0.01em;
         color: black;
+        margin: 2px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .selectedMult:hover {
+        background-color: #4445FA;
     }
 
     .wrongMult {
@@ -231,9 +238,15 @@ export default {
     }
 
     .multBtn {
-        background-color: #4E4E4E;
-        border: 0.01em solid azure;
+        background-color: #3B3B3B;
+        border: 0.01em solid #484848;
         cursor: pointer;
+        margin: 2px;
+        border-radius: 5px;
+    }
+
+    .multBtn:hover {
+        background-color: #2D2D2D;
     }
 
 </style>

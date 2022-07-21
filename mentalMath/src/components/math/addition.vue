@@ -178,6 +178,14 @@ export default {
         background-color: #E83F95;
         border: #E83F95 solid 0.01em;
         color: black;
+        border-radius: 5px;
+        margin: 2px;
+        cursor: pointer;
+    }
+
+    .selected:hover {
+        background-color: #F4439D;
+        
     }
 
     .wrong {
@@ -189,12 +197,19 @@ export default {
 
     .difficultyBtn {
         border: 0.01em solid azure;
+        /* border-radius: 5px; */
     }
 
     .easyBtn {
-        background-color: #4E4E4E;
-        border: 0.01em solid azure;
+        background-color: #3B3B3B;
+        border: 0.01em solid #484848;
         cursor: pointer;
+        border-radius: 5px;
+        margin: 2px;
+    }
+
+    .easyBtn:hover {
+        background-color: #2D2D2D;
     }
 
 </style>

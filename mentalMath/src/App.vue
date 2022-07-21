@@ -1,21 +1,14 @@
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
 import Addition from './components/math/addition.vue'
-import Header from './components/header.vue'
-import MathModes from './components/mathModes.vue';
+import Header from './components/header/header.vue'
 import Subtraction from './components/math/subtraction.vue';
-import { ref } from 'vue';
-import Division from './components/math/division.vue';
 import Multiplication from './components/math/multiplication.vue';
 
 export default {
   components: {
     Header,
-    // MathModes,
     Subtraction,
     Addition,
-    Division,
     Multiplication
 },
   data() {
@@ -23,7 +16,6 @@ export default {
     return {
       showAdd: true,
       showSub: false,
-      showDiv: false,
       showMult: false
     };
   }
@@ -45,18 +37,12 @@ export default {
                 <label @click="showAdd = false, showSub = true, showDiv = false, showMult = false" class="subLabel">SUBTRACTION</label>
                 <!-- <button @click="displaySub()">Sub</button> -->
             </div>
-            <!-- <div class="col">
-                <label @click="showDiv = true, showAdd = false, showSub = false, showMult = false" class="divLabel">DIVISION</label>
-            </div> -->
         </div>
   </div>
 
   <div v-if="showAdd" class="mainContent">
     <Addition />
   </div>
-  <!-- <div v-else-if="showDiv" class="mainContent">
-    <Division />
-  </div> -->
   <div v-else-if="showMult" class="mainContent">
     <Multiplication />
   </div>
@@ -115,7 +101,7 @@ export default {
     }
 
     .subLabel:hover {
-        color: #3F94E8;
+        color: #32CAFF;
         cursor: pointer;
     }
 

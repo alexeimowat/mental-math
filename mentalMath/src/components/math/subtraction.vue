@@ -153,7 +153,7 @@ export default {
 
 <style>
     .titleHeaderSub {
-        color: #3F94E8;
+        color: #32CAFF;
         font-weight: bolder;
         font-style: italic;
         font-size: x-large;
@@ -175,9 +175,16 @@ export default {
     }
 
     .selectedSub {
-        background-color: #3F94E8;
-        border: #3F94E8 solid 0.01em;
+        background-color: #2FC1F4;
+        border: #2FC1F4 solid 0.01em;
         color: black;
+        margin: 2px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .selectedSub:hover {
+        background-color: #32CAFF;
     }
 
     .wrongSub {
@@ -192,9 +199,15 @@ export default {
     }
 
     .subBtn {
-        background-color: #4E4E4E;
-        border: 0.01em solid azure;
+        background-color: #3B3B3B;
+        border: 0.01em solid #484848;
+        border-radius: 5px;
         cursor: pointer;
+        margin: 2px;
+    }
+
+    .subBtn:hover {
+        background-color: #2D2D2D;
     }
 
 </style>

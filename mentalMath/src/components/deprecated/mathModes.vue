@@ -77,7 +77,7 @@ export default {
     }
 
     .subLabel:hover {
-        color: #3F94E8;
+        color: #32CAFF;
         cursor: pointer;
     }
 
