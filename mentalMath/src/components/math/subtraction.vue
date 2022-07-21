@@ -13,11 +13,11 @@
         </div>
 
         <div class="row d-flex justify-content-center">
-            <div class="col-md-3">
-                <input v-model="userAnswer" name="userAnswer" class="form-control" type="number" style="text-align: center;" required>
+            <div class="col-sm-auto">
+                <input v-model="userAnswer" name="userAnswer" class="form-control" type="number" style="text-align: center; width: 80%; margin: auto" required>
 
                 <!-- <input v-model="userAnswer" name="userAnswer" class="form-control" style="text-align:center;font-size: xx-large;" type="number" required> -->
-                <button class="btn btn-primary mt-3" style="display: block; width: 100%;">Check</button>
+                <button class="btn btn-primary mt-3" style="display: block; width: 80%; margin: auto;">Check</button>
 
             </div>
         </div>

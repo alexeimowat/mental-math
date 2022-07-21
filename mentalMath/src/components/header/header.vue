@@ -11,7 +11,7 @@
 <style>
     .theHeader {
     margin: 0;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     width: 100%;
     padding: 10px;
     /* background-color: #272829; */
@@ -27,6 +27,7 @@
         margin-bottom: 0;
         text-align: center;
         margin: auto;
+        /* padding: 0; */
     }
 
     .M {

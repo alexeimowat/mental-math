@@ -25,16 +25,16 @@ export default {
 
 <template>
   <Header />
-  <div class="container" style="width:100%">
+  <div class="container" style="width:89%">
         <div class="row" style="text-align:center; margin-bottom: 10px; margin-top: 0;">
-            <div class="col">
-                <label @click="showAdd = true, showSub = false, showDiv = false, showMult = false" class="addLabel">ADDITION</label>
+            <div class="addCol col">
+                <label @click="showAdd = true, showSub = false, showMult = false" class="addLabel">ADDITION</label>
             </div>
-            <div class="col">
-                <label @click="showAdd = false, showSub = false, showDiv = false, showMult = true" class="multLabel">MULTIPLICATION</label>
+            <div class="subCol col">
+                <label @click="showAdd = false, showSub = false, showMult = true" class="multLabel">MULTIPLICATION</label>
             </div>
-            <div class="col">
-                <label @click="showAdd = false, showSub = true, showDiv = false, showMult = false" class="subLabel">SUBTRACTION</label>
+            <div class="multCol col">
+                <label @click="showAdd = false, showSub = true, showMult = false" class="subLabel">SUBTRACTION</label>
                 <!-- <button @click="displaySub()">Sub</button> -->
             </div>
         </div>
@@ -60,53 +60,75 @@ export default {
 <style>
   .mainContent {
     margin: auto;
+    /* margin-bottom: 0; */
     width: 90%;
     background-color: #43454A;
     /* border: #E83F95 0.01em solid; */
     border-radius: 10px;
   }
 
+  .addCol {
+    border: solid 0.01em #43454A;
+    max-width: 60%;
+  }
+
+  .subCol {
+    border: solid 0.01em #43454A;
+    max-width: 60%;
+  }
+
+  .multCol {
+    border: solid 0.01em #43454A;
+    max-width: 60%;
+  }
+
   .addLabel {
-        color: azure;
-        font-style: italic;
-        font-weight: bold;
-    }
+    color: azure;
+    font-style: italic;
+    font-weight: bold;
+    /* font-size: small; */
+    padding: 5px;
+  }
 
-    .multLabel {
-        color: azure;
-        font-style: italic;
-        font-weight: bold;
-    }
+  .multLabel {
+    color: azure;
+    font-style: italic;
+    font-weight: bold;
+    /* font-size: small; */
+    padding: 5px;
+  }
 
-    .subLabel {
-        color: azure;
-        font-style: italic;
-        font-weight: bold;
-    }
+  .subLabel {
+    color: azure;
+    font-style: italic;
+    font-weight: bold;
+    /* font-size: small; */
+    padding: 5px;
+  }
 
-    .divLabel {
-        color: azure;
-        font-style: italic;
-        font-weight: bold;
-    }
+  /* .divLabel {
+    color: azure;
+    font-style: italic;
+    font-weight: bold;
+  } */
 
-    .addLabel:hover {
-        color: #E83F95;
-        cursor: pointer;
-    }
+  .addLabel:hover {
+    color: #E83F95;
+    cursor: pointer;
+  }
 
-    .multLabel:hover {
-        color: #3F40E8;
-        cursor: pointer;
-    }
+  .multLabel:hover {
+    color: #3F40E8;
+    cursor: pointer;
+  }
 
-    .subLabel:hover {
-        color: #32CAFF;
-        cursor: pointer;
-    }
+  .subLabel:hover {
+    color: #32CAFF;
+    cursor: pointer;
+  }
 
-    .divLabel:hover {
-        color: #38D583;
-        cursor: pointer;
-    }
+  /* .divLabel:hover {
+    color: #38D583;
+    cursor: pointer;
+  } */
 </style>
