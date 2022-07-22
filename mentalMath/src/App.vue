@@ -14,7 +14,7 @@ export default {
     Multiplication
 },
   data() {
-
+    // below handles which component will be rendered based on user selection
     return {
       showAdd: true,
       showSub: false,
@@ -32,10 +32,10 @@ export default {
             <div class="addCol col">
                 <label @click="showAdd = true, showSub = false, showMult = false" class="addLabel">ADDITION</label>
             </div>
-            <div class="subCol col">
+            <div class="modeCol col">
                 <label @click="showAdd = false, showSub = false, showMult = true" class="multLabel">MULTIPLICATION</label>
             </div>
-            <div class="multCol col">
+            <div class="modeCol col">
                 <label @click="showAdd = false, showSub = true, showMult = false" class="subLabel">SUBTRACTION</label>
                 <!-- <button @click="displaySub()">Sub</button> -->
             </div>
@@ -54,11 +54,6 @@ export default {
   
   <Footer />
 
-  <!-- <p style="color:white">{{MathModes.call(getSubStatus)}}</p> -->
-  <!-- <main> -->
-    <!-- <TheWelcome /> -->
-  <!-- </main> -->
-
 </template>
 
 <style>
@@ -71,17 +66,7 @@ export default {
     border-radius: 10px;
   }
 
-  .addCol {
-    /* border: solid 0.01em #43454A; */
-    max-width: 60%;
-  }
-
-  .subCol {
-    /* border: solid 0.01em #43454A; */
-    max-width: 60%;
-  }
-
-  .multCol {
+  .modeCol {
     /* border: solid 0.01em #43454A; */
     max-width: 60%;
   }
@@ -110,12 +95,6 @@ export default {
     padding: 5px;
   }
 
-  /* .divLabel {
-    color: azure;
-    font-style: italic;
-    font-weight: bold;
-  } */
-
   .addLabel:hover {
     color: #E83F95;
     cursor: pointer;
@@ -131,8 +110,4 @@ export default {
     cursor: pointer;
   }
 
-  /* .divLabel:hover {
-    color: #38D583;
-    cursor: pointer;
-  } */
 </style>

@@ -1,6 +1,7 @@
 <template>
     <p class="titleHeaderMult">MULTIPLICATION</p>
     <form @submit.prevent="checkAnswer">
+        <!-- Expression -->
         <div id="theExpressionMult">
             <p class="expressionMult" style="margin-bottom 0">{{num1}} x {{num2}}</p>
         </div>
@@ -46,11 +47,7 @@
                     Hard
                 </label>
             </div>
-            <!-- <div class="col-sm" :class="{ 'selectedMult': difficultyLevel.at(3).enabled, 'multBtn': !difficultyLevel.at(3).enabled }" style="text-align: center;" @click="difficulty(3)">
-                <label class="btn" style="color:azure" id="3">
-                    Percents
-                </label>
-            </div> -->
+            
         </div>
     </div>
 
@@ -69,15 +66,11 @@ import { ref } from 'vue';
 
 export default {
     setup() {
-        // var anExpression = ref([{
-        //     id: 'add',
-        //     toStr: num1 + " + " + num2,
-
-        // }]);
-
-        // var percents = [5, 10, 15, 18, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100];
-        // var percentsIndex = Math.floor(Math.random() * (percents.length) - 1);
-
+        // Object for difficulty level tracking and specification. 
+        // Numbers that will be generated are as follows:
+        // Easy: numbers from 0-20
+        // Medium: numbers from 21-74
+        // Hard: numbers from 75-100
         var difficultyLevel = ref([{
             id: 'easy',
             minLevel: 0,
@@ -96,13 +89,6 @@ export default {
             maxLevel: 200,
             enabled: false
         }
-        // ,
-        // {
-        //     id: 'percent',
-        //     minLevel: 10,
-        //     maxLevel: 100,
-        //     enabled: false
-        // }
         ]);
         var currentLevel = 0;
         var userAnswer = ref('');
@@ -117,6 +103,10 @@ export default {
         var num2 = ref(Math.floor(Math.random() * (difficultyLevel.value[currentLevel].maxLevel - 
             difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel);
 
+        /* Function takes the user input and compares it to what the actual result should be
+        If the answer is correct, the user streak is increased and new numbers are generated.
+        If wrong, user must continue to answer the same question until getting a correct answer
+        */
         function checkAnswer() {
             // if (!difficultyLevel.value[3].enabled) {
             if (num1.value * num2.value === userAnswer.value) {
@@ -131,39 +121,28 @@ export default {
                 numTimesWrong.value++;
                 userStreak.value = 0;
             }
-            // }
-            // else {
-            //     let percentVal = percents.at(percentsIndex) / 100;
-            //     if (percentVal * num2.value === userAnswer.value) {
-                    
-            //         isCorrect = true;
-            //         userStreak.value++;
-            //         if (userStreak.value > allTimeBest.value) {
-            //             allTimeBest.value = userStreak.value;
-            //         }
-            //         newRandomNums();
-            //     }
-            //     else {
-            //         numTimesWrong.value++;
-            //         userStreak.value = 0;
-            //         console.log("Actual: " + percentVal * num2.value);
-            //         console.log("User: " + userAnswer.value);
-            //     }
-            // }
         }
 
+        /* Generates new numbers based on the current difficulty level.
+        Also resets variables determining user answer
+        */
         function newRandomNums() {
             num1.value = Math.floor(Math.random() * (difficultyLevel.value[currentLevel].maxLevel - 
                 difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel;
             num2.value = Math.floor(Math.random() * (difficultyLevel.value[currentLevel].maxLevel - 
                 difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel;
+            
+            // New numbers have been generated, so clear their answer, mark is correct as false, and 
+            // number of times wrong 0
             userAnswer.value = '';
             isCorrect = false;
             numTimesWrong.value = 0;
         }
 
+        /*  Change the difficulty level based on user selection. Once we've made this change to the object,
+        generate new random numbers based on the difficulty level ranges
+        */
         function difficulty(newLvl) {
-            // document.getElementById(currentLevel).setAttribute("class", )
             difficultyLevel.value[currentLevel].enabled = !difficultyLevel.value[currentLevel].enabled;
             difficultyLevel.value[newLvl].enabled = !difficultyLevel.value[newLvl].enabled;
             currentLevel = newLvl;

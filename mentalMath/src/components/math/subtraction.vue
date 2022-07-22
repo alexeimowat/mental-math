@@ -61,12 +61,11 @@ import { ref } from 'vue';
 
 export default {
     setup() {
-        // var anExpression = ref([{
-        //     id: 'add',
-        //     toStr: num1 + " + " + num2,
-
-        // }]);
-
+        // Object for difficulty level tracking and specification. 
+        // Numbers that will be generated are as follows:
+        // Easy: numbers from 0-20
+        // Medium: numbers from 21-74
+        // Hard: numbers from 75-100
         var difficultyLevel = ref([{
             id: 'easy',
             minLevel: 0,
@@ -99,6 +98,10 @@ export default {
         var num2 = ref(Math.floor(Math.random() * (difficultyLevel.value[currentLevel].maxLevel - 
             difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel);
 
+        /* Function takes the user input and compares it to what the actual result should be
+        If the answer is correct, the user streak is increased and new numbers are generated.
+        If wrong, user must continue to answer the same question until getting a correct answer
+        */
         function checkAnswer() {
             if (num1.value - num2.value === userAnswer.value) {
                 isCorrect = true;
@@ -114,6 +117,9 @@ export default {
             }
         }
 
+        /* Generates new numbers based on the current difficulty level.
+        Also resets variables determining user answer
+        */
         function newRandomNums() {
             num1.value = Math.floor(Math.random() * (difficultyLevel.value[currentLevel].maxLevel - 
                 difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel;
@@ -124,9 +130,10 @@ export default {
             numTimesWrong.value = 0;
         }
 
-        function difficulty(newLvl) {
-            // document.getElementById(currentLevel).setAttribute("class", )
-            
+        /*  Change the difficulty level based on user selection. Once we've made this change to the object,
+        generate new random numbers based on the difficulty level ranges
+        */
+        function difficulty(newLvl) {            
             difficultyLevel.value[currentLevel].enabled = !difficultyLevel.value[currentLevel].enabled;
             difficultyLevel.value[newLvl].enabled = !difficultyLevel.value[newLvl].enabled;
             currentLevel = newLvl;

@@ -1,8 +1,9 @@
 <template>
         <p class="titleHeader">ADDITION</p>
         <form @submit.prevent="checkAnswer">
+            <!-- Expression -->
             <div id="theExpression">
-                <p class="expression" style="margin-bottom 0">{{num1}} + {{num2}}</p>
+                <p class="expression">{{num1}} + {{num2}}</p>
             </div>
             <div v-if="numTimesWrong > 0" class="row wrong">
                 <p>Incorrect, try again</p>
@@ -10,51 +11,38 @@
             <div v-else>
                 <p>&nbsp;</p>
             </div>
-
+            <!-- User input box and verify button -->
             <div class="row d-flex justify-content-center">
                 <div class="col-sm-auto">
                     <input v-model="userAnswer" name="userAnswer" class="form-control" type="number" style="text-align: center; width: 60%; margin: auto" required>
                     <button class="btn btn-primary mt-3" style="display: block; width: 60%; margin: auto;">Check</button>
                 </div>
-                <!-- <div class="col-sm-auto">
-                    <button>Skip</button>
-                </div> -->
-                
                 
             </div>
-            <!-- <div class="row d-flex justify-content-center">
-                <div class="col-sm-2">
-                    <button class="btn btn-primary mt-3" style="display: block; float: right; width: 40%; margin: auto;">Check</button>
-                </div>
-                <div class="col-sm-2">
-                    <button class="btn btn-secondary mt-3" style="width: 40%; margin: auto">Skip</button>
-                </div>
-            </div> -->
         </form>
 
+        <!-- Container for difficulty buttons -->
         <div class="container" style="max-width: 30%; margin-top: 20px;">
             <div class="row">
                 <div class="col-sm" :class="{ 'selected': difficultyLevel.at(0).enabled, 'easyBtn': !difficultyLevel.at(0).enabled }" style="text-align: center" @click="difficulty(0)">
                     <label class="btn" style="color:azure" id="0">
-                        <!-- <input type="radio" name="options" id="easy" autocomplete="off" checked>  -->
                         Easy
                     </label>
                 </div>
                 <div class="col-sm" :class="{ 'selected': difficultyLevel.at(1).enabled, 'easyBtn': !difficultyLevel.at(1).enabled }" style="text-align: center;" @click="difficulty(1)">
                     <label class="btn" style="color:azure" id="1">
-                        <!-- <input type="radio" name="options" id="medium" autocomplete="off">  -->
                         Medium
                     </label>
                 </div>
                 <div class="col-sm" :class="{ 'selected': difficultyLevel.at(2).enabled, 'easyBtn': !difficultyLevel.at(2).enabled }" style="text-align: center;" @click="difficulty(2)">
                     <label class="btn" style="color:azure" id="2">
-                        <!-- <input type="radio" name="options" id="hard" autocomplete="off">  -->
                         Hard
                     </label>
                 </div>
             </div>
         </div>
 
+        <!-- User streaks -->
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -70,12 +58,11 @@ import { ref } from 'vue';
 
 export default {
     setup() {
-        // var anExpression = ref([{
-        //     id: 'add',
-        //     toStr: num1 + " + " + num2,
-
-        // }]);
-
+        // Object for difficulty level tracking and specification. 
+        // Numbers that will be generated are as follows:
+        // Easy: numbers from 0-20
+        // Medium: numbers from 21-74
+        // Hard: numbers from 75-100
         var difficultyLevel = ref([{
             id: 'easy',
             minLevel: 0,
@@ -97,6 +84,7 @@ export default {
         ]);
 
         var currentLevel = 0;
+
         var userAnswer = ref('');
         
         var isCorrect = false;
@@ -129,19 +117,26 @@ export default {
             }
         }
 
+        /* Generates new numbers based on the current difficulty level.
+        Also resets variables determining user answer
+        */
         function newRandomNums() {
             num1.value = Math.floor(Math.random() * (difficultyLevel.value[currentLevel].maxLevel - 
                 difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel;
             num2.value = Math.floor(Math.random() * (difficultyLevel.value[currentLevel].maxLevel - 
                 difficultyLevel.value[currentLevel].minLevel)) + difficultyLevel.value[currentLevel].minLevel;
+            
+            // New numbers have been generated, so clear their answer, mark is correct as false, and 
+            // number of times wrong 0
             userAnswer.value = '';
             isCorrect = false;
             numTimesWrong.value = 0;
         }
 
+        /*  Change the difficulty level based on user selection. Once we've made this change to the object,
+        generate new random numbers based on the difficulty level ranges
+        */
         function difficulty(newLvl) {
-            // document.getElementById(currentLevel).setAttribute("class", )
-            
             difficultyLevel.value[currentLevel].enabled = !difficultyLevel.value[currentLevel].enabled;
             difficultyLevel.value[newLvl].enabled = !difficultyLevel.value[newLvl].enabled;
             currentLevel = newLvl;
