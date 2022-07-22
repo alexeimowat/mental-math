@@ -1,12 +1,14 @@
 <script>
 import Addition from './components/math/addition.vue'
 import Header from './components/header/header.vue'
+import Footer from './components/footer/footer.vue'
 import Subtraction from './components/math/subtraction.vue';
 import Multiplication from './components/math/multiplication.vue';
 
 export default {
   components: {
     Header,
+    Footer,
     Subtraction,
     Addition,
     Multiplication
@@ -26,7 +28,7 @@ export default {
 <template>
   <Header />
   <div class="container" style="width:89%">
-        <div class="row" style="text-align:center; margin-bottom: 10px; margin-top: 0;">
+        <div class="row" style="text-align:center; margin-bottom: 10px;">
             <div class="addCol col">
                 <label @click="showAdd = true, showSub = false, showMult = false" class="addLabel">ADDITION</label>
             </div>
@@ -49,6 +51,8 @@ export default {
   <div v-else class="mainContent">
     <Subtraction />
   </div>
+  
+  <Footer />
 
   <!-- <p style="color:white">{{MathModes.call(getSubStatus)}}</p> -->
   <!-- <main> -->
@@ -68,17 +72,17 @@ export default {
   }
 
   .addCol {
-    border: solid 0.01em #43454A;
+    /* border: solid 0.01em #43454A; */
     max-width: 60%;
   }
 
   .subCol {
-    border: solid 0.01em #43454A;
+    /* border: solid 0.01em #43454A; */
     max-width: 60%;
   }
 
   .multCol {
-    border: solid 0.01em #43454A;
+    /* border: solid 0.01em #43454A; */
     max-width: 60%;
   }
 
